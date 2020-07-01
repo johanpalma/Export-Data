@@ -1,6 +1,7 @@
 const { model, Schema } = require('mongoose');
 
 const OrderSchema = new Schema({
+    carrier_id: { type: Schema.Types.ObjectId, ref: 'Carrier' },
     provider: String,
     address: String,
     phone: String,

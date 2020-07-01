@@ -19,20 +19,20 @@ function saveOrder(req, res) {
 }
 
 function getOrders(req, res) {
-    OrderModel.find((err, ordersData) => {
-      if (err) return res.status(500).json({ message: 'Error in get to data' });
-
-      return res.json({ordersData});
-    })
+    OrderModel.find().populate('carrier_id').exec((err, ordersData) => {
+        if (err) return res.status(500).json({ message: 'Error in get to data' });
+  
+        return res.json({ordersData});
+      });
 }
 
 function getOrderById(req, res) {
     const { id } = req.params;
-    OrderModel.findById(id, (err, orderData) => {
+    OrderModel.findById(id).populate('carrier_id').exec((err, orderData) => {
         if (err) return res.status(500).json({ message: 'Error in get to data' });
 
         return res.json({ orderData });
-    })
+    });
 }
 
 function getOrder(req, res) {

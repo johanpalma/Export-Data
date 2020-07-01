@@ -23,16 +23,16 @@ function saveShipment(req, res) {
 }
 
 function getShipments(req, res) {
-    ShipmentModel.find((err, shipmentData) => {
-      if (err) return res.status(500).json({ message: 'Error in get to data' });
-
-      return res.json({shipmentData});
-    })
+    ShipmentModel.find().populate('carrier_id').exec((err, shipmentData) => {
+        if (err) return res.status(500).json({ message: 'Error in get to data' });
+  
+        return res.json({shipmentData});
+      });
 }
 
 function getShipmentById(req, res) {
     const { id } = req.params;
-    ShipmentModel.findById(id, (err, shipmentData) => {
+    ShipmentModel.findById(id).populate('carrier_id').exec((err, shipmentData) => {
         if (err) return res.status(500).json({ message: 'Error in get to data' });
 
         return res.json({ shipmentData });

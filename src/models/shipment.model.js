@@ -1,7 +1,7 @@
 const { model, Schema } = require('mongoose');
 
 const ShipmentSchema = new Schema({
-    carrier_id: Number,
+    carrier_id: { type: Schema.Types.ObjectId, ref: 'Carrier' },
     date: Date,
     origin_country: String,
     origin_state: String,
