@@ -4,6 +4,10 @@ Programming language, Architecture, implementation, performance
 
 * this project is connected to google drive services and allows to upload an excel file, the project also sends an email notification when the excel file is uploaded 
 
+## App deploy
+
+* URL: https://data-export-google-drive.herokuapp.com/demo/
+
 ## Installation
 
 Use the package manager [npm](https://www.npmjs.com/get-npm) to install npm.
